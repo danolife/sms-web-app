@@ -16,7 +16,11 @@ class App extends Component {
     super(props);
     this.state = {
       user: null
-    }
+    };
+    this.setUser = this.setUser.bind(this)
+  }
+  setUser(user) {
+    this.setState({user: user});
   }
   render() {
     return (
@@ -25,7 +29,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo"/>
           <h1 className="App-title">Welcome to sms-web-app</h1>
         </header>
-        <Login/>
+        <Login
+          setUser={this.setUser}
+          user={this.state.user}
+        />
         <Links/>
       </div>
     );
@@ -100,16 +107,13 @@ class Users extends Component {
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: null
-    };
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
   }
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({user: user});
+        this.props.setUser(user);
       }
     });
   }
@@ -117,21 +121,27 @@ class Login extends Component {
     let provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then((result) => {
       let user = result.user;
-      this.setState({user: user});
+      this.props.setUser(user);
     });
   }
   logout() {
     firebase.auth().signOut().then(() => {
-      this.setState({user: null});
+      this.props.setUser(null);
     });
   }
   render() {
     return (
       <div className="wrapper">
-        {this.state.user ?
-          <button onClick={this.logout}>Log Out</button>
+        {this.props.user ?
+          <div>
+            <p>Welcome {this.props.user.displayName}</p>
+            <button onClick={this.logout}>Log Out</button>
+          </div>
           :
-          <button onClick={this.login}>Log In</button>
+          <div>
+            <p>Please log in</p>
+            <button onClick={this.login}>Log In</button>
+          </div>
         }
       </div>
     );

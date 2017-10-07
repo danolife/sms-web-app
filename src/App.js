@@ -106,6 +106,13 @@ class Login extends Component {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
   }
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({user: user});
+      }
+    });
+  }
   login() {
     let provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then((result) => {
@@ -114,7 +121,9 @@ class Login extends Component {
     });
   }
   logout() {
-    this.setState({user: null});
+    firebase.auth().signOut().then(() => {
+      this.setState({user: null});
+    });
   }
   render() {
     return (

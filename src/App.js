@@ -73,7 +73,8 @@ class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: []
+      users: [],
+      error: null
     }
   }
   componentWillMount(){
@@ -86,12 +87,19 @@ class Users extends Component {
         users.push(user);
         this.setState({users: users});
       });
+    }).catch((error) => {
+      this.setState({error: error});
     });
   }
   render() {
     return (
       <div className="Users">
         Users
+        { this.state.error ?
+          <div>Error: {this.state.error.message}</div>
+          :
+          ''
+        }
         <ul>
           {
             this.state.users.map(

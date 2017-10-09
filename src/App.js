@@ -48,16 +48,18 @@ class Links extends Component {
         <div>
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/users">Users</Link></li>
             <li><Link to="/profile">My profile</Link></li>
+            <li><Link to="/contacts">Contacts</Link></li>
           </ul>
 
           <hr/>
 
           <Route exact path="/" component={Home}/>
-          <Route exact path="/users" component={Users}/>
           <Route exact path="/profile" render={() => {
-            return (<UserProfile user={this.props.user}/>)
+            return (<UserProfile user={this.props.user}/>);
+          }} />
+          <Route exact path="/contacts" render={() => {
+            return (<Contacts user={this.props.user}/>);
           }} />
         </div>
       </Router>
@@ -101,32 +103,37 @@ class UserProfile extends Component {
   }
 }
 
-class Users extends Component {
+class Contacts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
+      contacts: [],
       error: null
-    }
+    };
   }
-  componentWillMount(){
+  componentWillReceiveProps(nextProps) {
     let db = firebase.firestore();
-    let users = [];
-    db.collection('users').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        let user = doc.data();
-        user.id = doc.id;
-        users.push(user);
-        this.setState({users: users});
+    if (nextProps.user) {
+      let userId = nextProps.user.uid;
+      let contactsRef = db
+        .collection('users')
+        .doc(userId)
+        .collection('contacts');
+      let contacts = [];
+      contactsRef.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          contacts.push(doc.data());
+          this.setState({contacts: contacts});
+        });
+      }).catch((error) => {
+        this.setState({error: error});
       });
-    }).catch((error) => {
-      this.setState({error: error});
-    });
+    }
   }
   render() {
     return (
-      <div className="Users">
-        Users
+      <div className="Contacts">
+        Contacts
         { this.state.error ?
           <div>Error: {this.state.error.message}</div>
           :
@@ -134,8 +141,8 @@ class Users extends Component {
         }
         <ul>
           {
-            this.state.users.map(
-              user => <li key={user.id}>{user.name}</li>
+            this.state.contacts.map(
+              contact => <li key={contact.uniqueId}>{contact.name}</li>
             )
           }
         </ul>

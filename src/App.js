@@ -33,7 +33,9 @@ class App extends Component {
           setUser={this.setUser}
           user={this.state.user}
         />
-        <Links/>
+        <Links
+          user={this.state.user}
+        />
       </div>
     );
   }
@@ -47,12 +49,16 @@ class Links extends Component {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/users">Users</Link></li>
+            <li><Link to="/profile">My profile</Link></li>
           </ul>
 
           <hr/>
 
           <Route exact path="/" component={Home}/>
           <Route exact path="/users" component={Users}/>
+          <Route exact path="/profile" render={() => {
+            return (<UserProfile user={this.props.user}/>)
+          }} />
         </div>
       </Router>
     );
@@ -64,6 +70,32 @@ class Home extends Component {
     return (
       <div className="Home">
         Home
+      </div>
+    );
+  }
+}
+
+class UserProfile extends Component {
+  render() {
+    let imgStyle = {
+      'maxHeight': '50px',
+      'maxWidth': '50px'
+    };
+
+    return (
+      <div className="UserProfile">
+        {this.props.user ?
+          <div>
+            <img src={this.props.user.photoURL}
+                 alt="profile"
+                 style={ imgStyle }
+            /><br/>
+            {this.props.user.displayName}<br/>
+            {this.props.user.email}
+          </div>
+        :
+          <div>You need to login</div>
+        }
       </div>
     );
   }

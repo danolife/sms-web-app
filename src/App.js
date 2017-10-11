@@ -59,7 +59,12 @@ class Links extends Component {
             return (<UserProfile user={this.props.user}/>);
           }} />
           <Route exact path="/contacts" render={() => {
-            return (<Contacts user={this.props.user}/>);
+            return (
+              this.props.user ?
+                <Contacts user={this.props.user}/>
+              :
+                null
+            );
           }} />
         </div>
       </Router>
@@ -111,10 +116,10 @@ class Contacts extends Component {
       error: null
     };
   }
-  componentWillReceiveProps(nextProps) {
-    let db = firebase.firestore();
-    if (nextProps.user) {
-      let userId = nextProps.user.uid;
+  fetchContacts() {
+    if (this.props.user) {
+      let db = firebase.firestore();
+      let userId = this.props.user.uid;
       let contactsRef = db
         .collection('users')
         .doc(userId)
@@ -128,6 +133,14 @@ class Contacts extends Component {
       }).catch((error) => {
         this.setState({error: error});
       });
+    }
+  }
+  componentWillMount() {
+    this.fetchContacts();
+  }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.user !== nextProps.user) {
+      this.fetchContacts();
     }
   }
   render() {

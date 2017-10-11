@@ -3,7 +3,7 @@ service cloud.firestore {
     match /{collection=**} {
       allow read, write: if false;
     }
-    match /users/{userId} {
+    match /users/{userId}/{anything=**} {
       allow read, write: if request.auth.uid == userId;
     }
   }

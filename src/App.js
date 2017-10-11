@@ -19,17 +19,27 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <h1 className="App-title">Welcome to sms-web-app</h1>
-        </header>
-        <Login
-          setUser={this.setUser}
-          user={this.state.user}
-        />
-        <Links
-          user={this.state.user}
-        />
+        {
+          this.state.user ?
+            <div>
+              <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo"/>
+                <h1 className="App-title">Welcome to sms-web-app</h1>
+              </header>
+              <Login
+                setUser={this.setUser}
+                user={this.state.user}
+              />
+              <Links
+                user={this.state.user}
+              />
+            </div>
+          :
+            <Login
+              setUser={this.setUser}
+              user={this.state.user}
+            />
+        }
       </div>
     );
   }

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import './fire';
 import Links from './components/Links';
@@ -22,10 +21,6 @@ class App extends Component {
         {
           this.state.user ?
             <div>
-              <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <h1 className="App-title">Welcome to sms-web-app</h1>
-              </header>
               <Login
                 setUser={this.setUser}
                 user={this.state.user}

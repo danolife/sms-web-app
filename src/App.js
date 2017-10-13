@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import './fire';
 import Links from './components/Links';
-import Login from './components/Login';
+import Login from './components/Login/Login';
 
 class App extends Component {
   constructor(props) {

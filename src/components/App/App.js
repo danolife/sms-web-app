@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
-import './fire';
-import Links from './components/Links';
-import Login from './components/Login/Login';
+import '../../fire';
+import Links from './Links';
+import Login from './Login/Login';
 
 class App extends Component {
   constructor(props) {

@@ -1,5 +1,6 @@
-.login__title {
-  font-size: 3rem; }
-
-.login__button {
-  margin: 0 auto; }
+.login {
+  padding: 50px; }
+  .login__title {
+    font-size: 3rem; }
+  .login__button {
+    margin: 0 auto; }

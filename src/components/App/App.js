@@ -4,6 +4,7 @@ import '../../fire';
 import Links from './Links';
 import Login from './Login/Login';
 import Menu from './Menu/Menu';
+import Conversations from './Conversations/Conversations';
 
 class App extends Component {
   constructor(props) {
@@ -22,10 +23,13 @@ class App extends Component {
         {
           this.state.user ?
             <div className="container">
-              <Menu
-                user={this.state.user}
-                setUser={this.setUser}
-              />
+              <div className="leftPane">
+                <Menu
+                  user={this.state.user}
+                  setUser={this.setUser}
+                />
+                <Conversations/>
+              </div>
               <Links
                 user={this.state.user}
               />

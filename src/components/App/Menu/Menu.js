@@ -38,6 +38,9 @@ class Menu extends Component {
         <div className="Menu__avatar">
           <img src={this.props.user.photoURL} alt="avatar"/>
         </div>
+        <h1 className="Menu__title">
+          SMS7
+        </h1>
         <IconButton
           color="contrast"
           onClick={this.openDropDown}

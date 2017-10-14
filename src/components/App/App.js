@@ -22,16 +22,10 @@ class App extends Component {
         {
           this.state.user ?
             <div className="container">
-              <div>
-                <Menu
-                  user={this.state.user}
-                  setUser={this.setUser}
-                />
-                <Login
-                  setUser={this.setUser}
-                  user={this.state.user}
-                />
-              </div>
+              <Menu
+                user={this.state.user}
+                setUser={this.setUser}
+              />
               <Links
                 user={this.state.user}
               />

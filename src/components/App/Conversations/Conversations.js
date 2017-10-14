@@ -86,7 +86,9 @@ class Conversations extends Component {
   render() {
     return (
       <div className="Conversations">
-        <List>
+        <List
+          disablePadding
+        >
           {
             this.state.conversations.map(function(conversation) {
               return (

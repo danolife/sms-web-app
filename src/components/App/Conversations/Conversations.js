@@ -5,8 +5,7 @@ import List, {
   ListItemAvatar,
   ListItemText,
 } from 'material-ui/List';
-import Avatar from 'material-ui/Avatar';
-import FolderIcon from 'material-ui-icons/Folder';
+import Avatar from '../Avatar/Avatar';
 
 class Conversations extends Component {
   constructor(props) {
@@ -23,51 +22,63 @@ class Conversations extends Component {
     let conversations = [
       {
         'id': 1,
-        'recipient': 'Jack Daniels'
+        'recipient': 'Jack Daniels',
+        'photoURL': this.props.user.photoURL,
       },
       {
         'id': 2,
-        'recipient': 'John Doe'
+        'recipient': 'John Doe',
+        'photoURL': this.props.user.photoURL,
       },
       {
         'id': 3,
-        'recipient': 'James Bond'
+        'recipient': 'James Bond',
+        'photoURL': this.props.user.photoURL,
       },
       {
         'id': 4,
-        'recipient': 'Jack Daniels'
+        'recipient': 'Jack Daniels',
+        'photoURL': this.props.user.photoURL,
       },
       {
         'id': 5,
-        'recipient': 'John Doe'
+        'recipient': 'John Doe',
+        'photoURL': this.props.user.photoURL,
       },
       {
         'id': 6,
-        'recipient': 'James Bond'
+        'recipient': 'James Bond',
+        'photoURL': this.props.user.photoURL,
       },
       {
         'id': 7,
-        'recipient': 'Jack Daniels'
+        'recipient': 'Jack Daniels',
+        'photoURL': this.props.user.photoURL,
       },
       {
         'id': 8,
-        'recipient': 'John Doe'
+        'recipient': 'John Doe',
+        'photoURL': this.props.user.photoURL,
       },
       {
         'id': 9,
-        'recipient': 'James Bond'
+        'recipient': 'James Bond',
+        'photoURL': this.props.user.photoURL,
       },
       {
         'id': 10,
-        'recipient': 'Jack Daniels'
+        'recipient': 'Jack Daniels',
+        'photoURL': this.props.user.photoURL,
       },
       {
         'id': 11,
-        'recipient': 'John Doe'
+        'recipient': 'John Doe',
+        'photoURL': this.props.user.photoURL,
       },
       {
         'id': 12,
-        'recipient': 'James Bond'
+        'recipient': 'James Bond',
+        'photoURL': this.props.user.photoURL,
       },
     ];
     this.setState({conversations: conversations});
@@ -79,11 +90,13 @@ class Conversations extends Component {
           {
             this.state.conversations.map(function(conversation) {
               return (
-                <ListItem button>
+                <ListItem
+                  button
+                  divider
+                  key={conversation.id}
+                >
                   <ListItemAvatar>
-                    <Avatar>
-                      <FolderIcon />
-                    </Avatar>
+                    <Avatar src={conversation.photoURL}/>
                   </ListItemAvatar>
                   <ListItemText
                     primary="Single-line item"

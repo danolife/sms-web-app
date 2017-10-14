@@ -25,6 +25,7 @@ class App extends Component {
               <div>
                 <Menu
                   user={this.state.user}
+                  setUser={this.setUser}
                 />
                 <Login
                   setUser={this.setUser}

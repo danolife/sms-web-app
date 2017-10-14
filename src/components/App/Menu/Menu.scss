@@ -2,9 +2,11 @@
   background-color: rgba(255, 255, 255, 0.2);
   padding: 10px;
   height: 45px;
-  text-align: left;
+  display: flex;
+  justify-content: space-between;
 
   &__avatar {
+    display: inline-block;
     height: 45px;
     width: 45px;
     border-radius: 50%;

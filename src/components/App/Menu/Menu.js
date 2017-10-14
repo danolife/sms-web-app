@@ -5,10 +5,9 @@ class Menu extends Component {
   render() {
     return (
       <div className="Menu">
-        <img src={this.props.user.photoURL}
-             alt="avatar"
-             className="Menu__avatar"
-        />
+        <div className="Menu__avatar">
+          <img src={this.props.user.photoURL} alt="avatar"/>
+        </div>
       </div>
     );
   }

@@ -1,6 +1,14 @@
 .Menu {
-  background-color: rgba(255, 255, 255, 0.2); }
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  height: 45px;
+  text-align: left; }
   .Menu__avatar {
-    max-height: 45px;
-    max-width: 45px;
-    border-radius: 50%; }
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #eeeeee; }
+    .Menu__avatar img {
+      max-height: 45px;
+      max-width: 45px; }

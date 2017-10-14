@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
-import ConversationPreview from './ConversationPreview/ConversationPreview';
 import './Conversations.css';
+import List, {
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+} from 'material-ui/List';
+import Avatar from 'material-ui/Avatar';
+import FolderIcon from 'material-ui-icons/Folder';
 
 class Conversations extends Component {
   constructor(props) {
@@ -38,7 +44,7 @@ class Conversations extends Component {
       {
         'id': 6,
         'recipient': 'James Bond'
-      },/*
+      },
       {
         'id': 7,
         'recipient': 'Jack Daniels'
@@ -62,23 +68,32 @@ class Conversations extends Component {
       {
         'id': 12,
         'recipient': 'James Bond'
-      },*/
+      },
     ];
     this.setState({conversations: conversations});
   }
   render() {
     return (
       <div className="Conversations">
-        {
-          this.state.conversations.map(function(conversation) {
-            return (
-              <ConversationPreview
-                key={conversation.id}
-                conversation={conversation}
-              />
-            );
-          })
-        }
+        <List>
+          {
+            this.state.conversations.map(function(conversation) {
+              return (
+                <ListItem button>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <FolderIcon />
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary="Single-line item"
+                    secondary="Secondary text"
+                  />
+                </ListItem>
+              );
+            })
+          }
+        </List>
       </div>
     );
   }

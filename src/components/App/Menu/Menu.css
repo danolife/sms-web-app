@@ -4,16 +4,6 @@
   height: 45px;
   display: flex;
   justify-content: space-between; }
-  .Menu__avatar {
-    display: inline-block;
-    height: 45px;
-    width: 45px;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: #eeeeee; }
-    .Menu__avatar img {
-      max-height: 45px;
-      max-width: 45px; }
   .Menu__title {
     font-size: 2rem;
     padding: 0;

@@ -5,6 +5,7 @@ import MoreVertIcon from 'material-ui-icons/MoreVert';
 import DropDown, { MenuItem as DropDownItem } from 'material-ui/Menu';
 import firebase from 'firebase';
 import 'firebase/auth';
+import Avatar from '../Avatar/Avatar';
 
 class Menu extends Component {
   constructor(props) {
@@ -35,9 +36,7 @@ class Menu extends Component {
   render() {
     return (
       <div className="Menu">
-        <div className="Menu__avatar">
-          <img src={this.props.user.photoURL} alt="avatar"/>
-        </div>
+        <Avatar src={this.props.user.photoURL}/>
         <h1 className="Menu__title">
           SMS7
         </h1>

@@ -1,0 +1,8 @@
+.Menu {
+  background-color: rgba(255, 255, 255, 0.2);
+  &__avatar {
+    max-height: 45px;
+    max-width: 45px;
+    border-radius: 50%;
+  }
+}

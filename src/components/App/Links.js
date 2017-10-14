@@ -5,7 +5,6 @@ import {
   Link
 } from 'react-router-dom'
 import Home from './Home';
-import UserProfile from './UserProfile';
 import Contacts from './Contacts';
 
 class Links extends Component {
@@ -15,20 +14,18 @@ class Links extends Component {
         <div>
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/profile">My profile</Link></li>
             <li><Link to="/contacts">Contacts</Link></li>
           </ul>
 
           <hr/>
 
           <Route exact path="/" component={Home}/>
-          <Route exact path="/profile" render={() => {
-            return (<UserProfile user={this.props.user}/>);
-          }} />
           <Route exact path="/contacts" render={() => {
             return (
               this.props.user ?
-                <Contacts user={this.props.user}/>
+                <div>
+                  <Contacts user={this.props.user}/>
+                </div>
                 :
                 null
             );

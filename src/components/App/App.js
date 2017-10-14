@@ -28,7 +28,9 @@ class App extends Component {
                   user={this.state.user}
                   setUser={this.setUser}
                 />
-                <Conversations/>
+                <Conversations
+                  user={this.state.user}
+                />
               </div>
               <Links
                 user={this.state.user}

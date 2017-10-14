@@ -6,7 +6,15 @@ class ConversationPreview extends Component {
     const conversation = this.props.conversation;
     return (
       <div className="ConversationPreview">
-        {conversation.recipient}
+        <div className="ConversationPreview__avatar">
+          lol
+        </div>
+        <div className="ConversationPreview__name">
+          {conversation.recipient}
+        </div>
+        <div className="ConversationPreview__time">
+          12:34
+        </div>
       </div>
     );
   }

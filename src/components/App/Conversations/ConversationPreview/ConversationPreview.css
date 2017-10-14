@@ -1,5 +1,14 @@
 .ConversationPreview {
   height: 45px;
   padding: 10px;
-  background-color: black;
-  flex-shrink: 0; }
+  background-color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+  color: #333333;
+  display: flex; }
+  .ConversationPreview:not(:last-child) {
+    border-bottom: solid 1px rgba(255, 255, 255, 0.7); }
+  .ConversationPreview:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.7); }
+  .ConversationPreview__name {
+    flex-grow: 1; }

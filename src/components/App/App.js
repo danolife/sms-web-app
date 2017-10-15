@@ -5,7 +5,8 @@ import Links from './Links';
 import Login from './Login/Login';
 import Menu from './Menu/Menu';
 import Conversations from './Conversations/Conversations';
-import MobileChecker from './MobileChecker';
+import MobileChecker from './Mobile/MobileChecker';
+import MobileApp from './Mobile/MobileApp';
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +21,9 @@ class App extends Component {
   }
   render() {
     if (MobileChecker.check()) {
-      return 'lol';
+      return (
+        <MobileApp/>
+      );
     }
     return (
       <div className="App">

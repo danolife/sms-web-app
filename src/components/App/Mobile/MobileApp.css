@@ -1,0 +1,9 @@
+.MobileApp {
+  padding: 0 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh; }
+  .MobileApp__message {
+    font-size: 2.5rem;
+    margin-bottom: 50px; }

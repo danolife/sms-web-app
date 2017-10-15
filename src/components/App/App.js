@@ -5,6 +5,7 @@ import Links from './Links';
 import Login from './Login/Login';
 import Menu from './Menu/Menu';
 import Conversations from './Conversations/Conversations';
+import MobileChecker from './MobileChecker';
 
 class App extends Component {
   constructor(props) {
@@ -18,6 +19,9 @@ class App extends Component {
     this.setState({user: user});
   }
   render() {
+    if (MobileChecker.check()) {
+      return 'lol';
+    }
     return (
       <div className="App">
         {

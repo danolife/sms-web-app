@@ -4,3 +4,19 @@
   display: flex;
   flex-direction: column;
   overflow-y: scroll; }
+  .Conversations__item-avatar {
+    margin-right: 16px; }
+  .Conversations__item-text {
+    text-align: left;
+    min-width: 0; }
+  .Conversations__item-primary-text {
+    color: rgba(255, 255, 255, 0.85);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; }
+  .Conversations__item-secondary-text {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; }

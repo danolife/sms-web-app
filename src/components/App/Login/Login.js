@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import firebase from 'firebase';
 import 'firebase/auth';
-import './Login.css';
+import styles from './Login.scss';
 import GoogleButton from 'react-google-button';
 
 class Login extends Component {
@@ -25,10 +25,10 @@ class Login extends Component {
   }
   render() {
     return (
-      <div className="login">
-        <h1 className="login__title">Welcome to SMS7</h1>
+      <div className={styles.login}>
+        <h1 className={styles.login__title}>Welcome to SMS7</h1>
         <GoogleButton
-          className="login__button"
+          className={styles.login__button}
           type="light"
           onClick={this.login}
         />

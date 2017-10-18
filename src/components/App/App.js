@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
+import styles from './App.scss';
 import '../../fire';
 import Links from './Links';
 import Login from './Login/Login';
@@ -26,11 +26,11 @@ class App extends Component {
       );
     }
     return (
-      <div className="App">
+      <div className={styles.App}>
         {
           this.state.user ?
-            <div className="container">
-              <div className="leftPane">
+            <div className={styles.container}>
+              <div className={styles.leftPane}>
                 <Menu
                   user={this.state.user}
                   setUser={this.setUser}

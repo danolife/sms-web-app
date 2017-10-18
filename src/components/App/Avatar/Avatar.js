@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import './Avatar.css';
+import styles from './Avatar.scss';
 
 class Avatar extends Component {
   render() {
     return (
-      <div className="Avatar">
+      <div className={styles.Avatar}>
         <img src={this.props.src} alt="avatar"/>
       </div>
     );

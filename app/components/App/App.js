@@ -25,6 +25,7 @@ class App extends Component {
         <MobileApp/>
       );
     }
+
     return (
       <div className="App">
         {

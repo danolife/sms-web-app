@@ -1,4 +1,12 @@
 .idea
 node_modules
-src/firebase.config.js
+app/firebase.config.js
 build
+
+# Don't check auto-generated stuff into git
+coverage
+stats.json
+
+# Cruft
+.DS_Store
+npm-debug.log

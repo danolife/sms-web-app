@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './app.global.scss';
 import App from './components/App/App';
 
 const MOUNT_NODE = document.getElementById('root');

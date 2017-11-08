@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './MobileApp.css';
+import styles from './MobileApp.scss';
 import Button from 'material-ui/Button/Button';
 
 class MobileApp extends Component {
@@ -8,8 +8,8 @@ class MobileApp extends Component {
   }
   render() {
     return (
-      <div className="MobileApp">
-        <div className="MobileApp__message">
+      <div className={styles.MobileApp}>
+        <div className={styles.MobileApp__message}>
           Looks like you're trying to use SMS7 from a smart phone.
         </div>
         <Button

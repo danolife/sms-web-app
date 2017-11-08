@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Menu.css';
+import styles from './Menu.scss';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui-icons/MoreVert';
 import DropDown, { MenuItem as DropDownItem } from 'material-ui/Menu';
@@ -35,9 +35,9 @@ class Menu extends Component {
   }
   render() {
     return (
-      <div className="Menu">
+      <div className={styles.Menu}>
         <Avatar src={this.props.user.photoURL}/>
-        <h1 className="Menu__title">
+        <h1 className={styles.Menu__title}>
           SMS7
         </h1>
         <IconButton

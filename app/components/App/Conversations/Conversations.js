@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Conversations.css';
+import styles from './Conversations.scss';
 import List, {
   ListItem,
 } from 'material-ui/List';
@@ -84,7 +84,7 @@ class Conversations extends Component {
   }
   render() {
     return (
-      <div className="Conversations">
+      <div className={styles.Conversations}>
         <List
           disablePadding
         >
@@ -96,14 +96,15 @@ class Conversations extends Component {
                   divider
                   key={conversation.id}
                 >
-                  <div className="Conversations__item-avatar"> {/*.84, .56*/}
+                    {/*.84, .56*/}
+                  <div className={styles.Conversations__item_avatar}>
                     <Avatar src={conversation.photoURL}/>
                   </div>
-                  <div className="Conversations__item-text">
-                    <div className="Conversations__item-primary-text">
+                  <div className={styles.Conversations__item_text}>
+                    <div className={styles.Conversations__item_primary_text}>
                       {conversation.recipient}
                     </div>
-                    <div className="Conversations__item-secondary-text">
+                    <div className={styles.Conversations__item_secondary_text}>
                       Ceci est le dernier message et il est plutôt long donc j'espère qu'il sera bien coupé comme il faut pour pas qu'il dépasse n'importe comment
                     </div>
                   </div>

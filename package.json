@@ -2,23 +2,122 @@
   "name": "sms-web-app",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "analyze": "node ./internals/scripts/analyze.js",
+    "analyze:clean": "rimraf stats.json",
+    "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
+    "build:clean": "rimraf ./build",
+    "build:dll": "node ./internals/scripts/dependencies.js",
+    "postinstall": "npm run build:dll",
+    "preanalyze": "npm run analyze:clean",
+    "prebuild": "npm run build:clean",
+    "start": "cross-env NODE_ENV=development node server",
+    "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
+    "start:production": "npm run build && npm run start:prod",
+    "start:prod": "cross-env NODE_ENV=production node server"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false
+        }
+      ],
+      "react",
+      "stage-0"
+    ],
+    "env": {
+      "production": {
+        "only": [
+          "app"
+        ],
+        "plugins": [
+          "transform-react-remove-prop-types",
+          "transform-react-constant-elements",
+          "transform-react-inline-elements"
+        ]
+      },
+      "test": {
+        "plugins": [
+          "transform-es2015-modules-commonjs",
+          "dynamic-import-node"
+        ]
+      }
+    }
+  },
+  "dllPlugin": {
+    "path": "node_modules/react-boilerplate-dlls",
+    "exclude": [
+      "chalk",
+      "compression",
+      "cross-env",
+      "express",
+      "ip",
+      "minimist",
+      "sanitize.css"
+    ],
+    "include": [
+      "core-js",
+      "lodash",
+      "eventsource-polyfill"
+    ]
+  },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "chalk": "^2.3.0",
+    "compression": "^1.7.1",
+    "cross-env": "^5.1.1",
+    "express": "^4.16.2",
     "firebase": "^4.5.0",
+    "ip": "^1.1.5",
+    "lodash": "^4.17.4",
     "material-ui": "next",
     "material-ui-icons": "^1.0.0-beta.15",
-    "node-sass-chokidar": "0.0.3",
+    "minimist": "^1.2.0",
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-google-button": "^0.3.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.14"
+    "sanitize.css": "^5.0.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+  "devDependencies": {
+    "add-asset-html-webpack-plugin": "^2.1.2",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-dynamic-import-node": "^1.1.0",
+    "babel-plugin-react-intl": "^2.3.1",
+    "babel-plugin-react-transform": "^3.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-react-constant-elements": "^6.23.0",
+    "babel-plugin-transform-react-inline-elements": "^6.22.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.10",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "circular-dependency-plugin": "^4.2.1",
+    "css-loader": "^0.28.7",
+    "eventsource-polyfill": "^0.9.6",
+    "exports-loader": "^0.6.4",
+    "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "image-webpack-loader": "^3.4.2",
+    "imports-loader": "^0.7.1",
+    "ngrok": "^2.2.23",
+    "node-sass": "^4.6.0",
+    "null-loader": "^0.1.1",
+    "offline-plugin": "^4.8.4",
+    "react-hot-loader": "^3.1.1",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^6.0.6",
+    "shelljs": "^0.7.8",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.8.1",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-hot-middleware": "^2.20.0"
   }
 }
